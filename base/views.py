@@ -33,10 +33,10 @@ class RegisterPage(FormView):
     def form_valid(self, form: Any) -> HttpResponse:
         user = form.save()
         if user is not None:
-            login(self.request, user)
+            login(self.request, user) 
         return super(RegisterPage, self).form_valid(form)
     
-    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+    def get(self, *args: str, **kwargs: Any) -> HttpResponse:
         if self.request.user.is_authenticated:
             return redirect('tasks')
         return super(RegisterPage, self).get(*args, **kwargs) 
